@@ -1,3 +1,6 @@
 handin/someproject not found
 corresponding revision: 
 HEAD
+handin/someproject not found
+corresponding revision: 
+f00b538795504afb27d270efb1fcdcea85cb77d2
