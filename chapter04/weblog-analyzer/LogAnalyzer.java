@@ -15,13 +15,13 @@ public class LogAnalyzer
     /**
      * Create an object to analyze hourly web accesses.
      */
-    public LogAnalyzer()
+    public LogAnalyzer(String readerName)
     { 
         // Create the array object to hold the hourly
         // access counts.
         hourCounts = new int[24];
         // Create the reader to obtain the data.
-        reader = new LogfileReader();
+        reader = new LogfileReader(readerName);
     }
 
     /**
@@ -55,5 +55,72 @@ public class LogAnalyzer
     public void printData()
     {
         reader.printData();
+    }
+    
+      /**
+       * Return the number of accesses recorded in the log
+       * file.
+       */
+      public int numberOfAccesses()
+      {
+        int total = 0;
+        // Add the value in each element of hourCounts // to total.
+        for(int i = 0; i < hourCounts.length; i++){
+            total += hourCounts[i];
+        }
+        return total;
+    }
+    
+       /**
+       * Return the number of accesses recorded in the log
+       * file.
+       */
+      public int busiestHour()
+      {
+        int busiest = 0;
+        int hour = 0;
+        // Add the value in each element of hourCounts // to total.
+        for(int i = 0; i < hourCounts.length; i++){
+            if(busiest < hourCounts[i]){
+            busiest = hourCounts[i];
+            hour = i;
+            }
+        }
+        return hour;
+    }
+    
+      /**
+       * Return the number of accesses recorded in the log
+       * file.
+       */
+      public int quietestHour()
+      {
+        int quietest = busiestHour();
+        int hour = 0;
+        // Add the value in each element of hourCounts // to total.
+        for(int i = 0; i < hourCounts.length; i++){
+            if(quietest > hourCounts[i]){
+            quietest = hourCounts[i];
+            hour = i;
+            }
+        }
+        return hour;
+    }
+    
+    /**
+    * Return the quietest hour
+    */
+    public int busiest2hours(){
+        int busiest = 0;
+        int hour = 0;
+        for (int i=0;i<(hourCounts.length-1);i++){
+            if (hourCounts[i] == hourCounts[i+1]){
+                if (hourCounts[i] > busiest){
+                    busiest = hourCounts[i];
+                    hour = i;
+                }             
+            }
+        }
+        return hour;
     }
 }
