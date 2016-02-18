@@ -79,13 +79,18 @@ public class ClockDisplay
     private void updateDisplay()
     {
         NumberDisplay hour;
+        String time;
         hour = new NumberDisplay(13);
         if(hours.getValue() >= 13){
             hour.setValue(hours.getValue() % 12);
+            time = "PM" ;
         }else{
             hour.setValue(hours.getValue());
+            time = "AM";
         }
-        displayString = hour.getDisplayValue() + ":" + 
-                        minutes.getDisplayValue();
+        if(hour.getValue() == 0){
+           hour.setValue(12);
+        }
+        displayString = hour.getDisplayValue() + ":" + minutes.getDisplayValue() + " " + time;
     }
 }
