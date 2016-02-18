@@ -88,6 +88,9 @@ public class ClockDisplay
             hour.setValue(hours.getValue());
             time = "AM";
         }
+        if(hour.getValue() == 0){
+           hour.setValue(12);
+        }
         displayString = hour.getDisplayValue() + ":" + minutes.getDisplayValue() + " " + time;
     }
 }
