@@ -23,10 +23,10 @@ public class NameGenerator
      */
     public NameGenerator(String setFirstName, String setLastName, String setMothersName, String setCityName)
     {
-        firstName = setFirstName;
-        lastName = setLastName;
-        mothersName = setMothersName;
-        cityName = setCityName;
+        firstName = setFirstName.replaceAll("\\s+","");
+        lastName = setLastName.replaceAll("\\s+","");
+        mothersName = setMothersName.replaceAll("\\s+","");
+        cityName = setCityName.replaceAll("\\s+","");
     }
     
     /**
@@ -39,10 +39,10 @@ public class NameGenerator
      */
     public void setName(String setFirstName, String setLastName, String setMothersName, String setCityName)
     {
-        firstName = setFirstName;
-        lastName = setLastName;
-        mothersName = setMothersName;
-        cityName = setCityName;
+        firstName = setFirstName.replaceAll("\\s+","");
+        lastName = setLastName.replaceAll("\\s+","");
+        mothersName = setMothersName.replaceAll("\\s+","");
+        cityName = setCityName.replaceAll("\\s+","");
     }
 
     /**
