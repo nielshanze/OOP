@@ -23,10 +23,10 @@ public class NameGenerator
      */
     public NameGenerator(String setFirstName, String setLastName, String setMothersName, String setCityName)
     {
-        firstName = setFirstName.replaceAll("\\s+","");
-        lastName = setLastName.replaceAll("\\s+","");
-        mothersName = setMothersName.replaceAll("\\s+","");
-        cityName = setCityName.replaceAll("\\s+","");
+        firstName = setFirstName;
+        lastName = setLastName;
+        mothersName = setMothersName;
+        cityName = setCityName;
     }
     
     /**
@@ -39,10 +39,10 @@ public class NameGenerator
      */
     public void setName(String setFirstName, String setLastName, String setMothersName, String setCityName)
     {
-        firstName = setFirstName.replaceAll("\\s+","");
-        lastName = setLastName.replaceAll("\\s+","");
-        mothersName = setMothersName.replaceAll("\\s+","");
-        cityName = setCityName.replaceAll("\\s+","");
+        firstName = setFirstName;
+        lastName = setLastName;
+        mothersName = setMothersName;
+        cityName = setCityName;
     }
 
     /**
@@ -54,8 +54,8 @@ public class NameGenerator
         // put your code here
         String starFirst;
         String starLast;
-        starFirst = lastName.substring(0,3) + firstName.toLowerCase().substring(0,2);
-        starLast = mothersName.substring(0,2) + cityName.toLowerCase().substring(0,3);
-        System.out.println(starFirst + " " + starLast + ", may the force be with you!");
+        starFirst = lastName.toLowerCase().substring(0,3) + firstName.toLowerCase().substring(0,2);
+        starLast = mothersName.toLowerCase().substring(0,2) + cityName.toLowerCase().substring(0,3);
+        System.out.println(starFirst.substring(0, 1).toUpperCase() + starFirst.substring(1) + " " + starLast.substring(0, 1).toUpperCase() + starLast.substring(1) + ", may the force be with you!");
     }
 }
