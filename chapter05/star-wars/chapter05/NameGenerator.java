@@ -23,10 +23,7 @@ public class NameGenerator
      */
     public NameGenerator(String setFirstName, String setLastName, String setMothersName, String setCityName)
     {
-        firstName = setFirstName;
-        lastName = setLastName;
-        mothersName = setMothersName;
-        cityName = setCityName;
+        setName(setFirstName, setLastName, setMothersName, setCityName);
     }
     
     /**
@@ -39,6 +36,25 @@ public class NameGenerator
      */
     public void setName(String setFirstName, String setLastName, String setMothersName, String setCityName)
     {
+        if(setFirstName == null || setFirstName.length() < 2){
+            System.out.println("No sufficient first name given!");
+            System.exit(0);
+        }
+        
+        if(setLastName == null || setLastName.length() < 3){
+            System.out.println("No sufficient last name given!");
+            System.exit(0);
+        }
+        
+        if(setMothersName == null || setMothersName.length() < 2){
+            System.out.println("No sufficient mothers name given!");
+            System.exit(0);
+        }
+        
+        if(setCityName == null || setCityName.length() < 3){
+            System.out.println("No sufficient city name given!");
+            System.exit(0);
+        }
         firstName = setFirstName;
         lastName = setLastName;
         mothersName = setMothersName;
@@ -51,7 +67,6 @@ public class NameGenerator
      */
     public void generateStarWarsName()
     {
-        // put your code here
         String starFirst;
         String starLast;
         starFirst = lastName.toLowerCase().substring(0,3) + firstName.toLowerCase().substring(0,2);
