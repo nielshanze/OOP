@@ -51,21 +51,21 @@ public class Game
         outside.setExit("east", theater);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
-        outside.setItem("Nice thing", 10.4);
+        outside.setItem("The tree of wisdom is watching over you", 9999.99);
 
         theater.setExit("west", outside);
-        theater.setItem("item to sound louder", 11.3);
-        theater.setItem("Nice thing2", 10.4);
+        theater.setItem("The broad sword is to broad", 111.3);
+        theater.setItem("Let the laptop be, please!", 10.4);
 
         pub.setExit("east", outside);
-        pub.setItem("nice refreshing drink", 1.1);
+        pub.setItem("HA! BEEEEEEER!", 0.1);
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
-        lab.setItem("flame with burst", 4.4);
+        lab.setItem("Al the cables! And maybe a virus", 4.4);
 
         office.setExit("west", lab);
-        office.setItem("search engine", 99.99);
+        office.setItem("Don't disturb the master", 99.99);
 
         currentRoom = outside;  // start game outside
     }
