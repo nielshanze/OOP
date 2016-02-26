@@ -114,12 +114,12 @@ public class LogAnalyzer
         int busiest = 0;
         int hour = 0;
         for (int i=0;i<(hourCounts.length-1);i++){
-            if (hourCounts[i] == hourCounts[i+1]){
-                if (hourCounts[i] > busiest){
-                    busiest = hourCounts[i];
-                    hour = i;
-                }             
-            }
+            int sumHours = hourCounts[i] + hourCounts[i + 1];
+            if (sumHours > busiest){
+                busiest = sumHours;
+                hour = i;
+            }             
+        
         }
         return hour;
     }
