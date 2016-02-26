@@ -1,5 +1,6 @@
 import java.util.Set;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * Class Room - a room in an adventure game.
@@ -19,6 +20,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
+    private ArrayList<Item> items;
 
     /**
      * Create a room described "description". Initially, it has
@@ -30,6 +32,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<String, Room>();
+        items = new ArrayList<Item>();
     }
 
     /**
@@ -59,7 +62,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + getExitString() + "\n" + getItemInfo();
     }
 
     /**
@@ -87,5 +90,33 @@ public class Room
     {
         return exits.get(direction);
     }
+    
+    /**
+     * Return the room that is reached if we go from this room in direction
+     * "direction". If there is no room in that direction, return null.
+     * @param direction The exit's direction.
+     * @return The room in the given direction.
+     */
+    public void setItem(String description, double weight) 
+    {   
+        items.add(new Item(description, weight));
+    }
+    
+    /**
+     * Return the room that is reached if we go from this room in direction
+     * "direction". If there is no room in that direction, return null.
+     * @param direction The exit's direction.
+     * @return The room in the given direction.
+     */
+    public String getItemInfo() 
+    {
+        String returnString = "Items:";
+        for(int i = 0; i < items.size(); i++) {
+            returnString += " \n" + items.get(i).getItemInfo();
+        }
+        return returnString;
+    }
+   
+    
 }
 
