@@ -90,7 +90,7 @@ public class Game
 
     /**
      * Print out the opening message for the player.
-     */
+     */thisSchool
     private void printWelcome()
     {
         System.out.println();
