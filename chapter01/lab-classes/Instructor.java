@@ -7,15 +7,7 @@
  */
 public class Instructor extends Student
 {
-    // instance variables - replace the example below with your own
-    // the student's full name
-    private Student instructor;
-     // the student's full name
-    private String name;
-    // the student ID
-    private String id;
-    // the amount of credits for study taken so far
-    private int credits;
+   
     
     public Instructor(String fullName, String studentID)
     {
