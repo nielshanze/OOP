@@ -2,8 +2,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 import java.io.File;
+
 
 /**
  * ImageViewer is the main class of the image viewer application. It builds and
@@ -26,6 +28,8 @@ public class ImageViewer
     private JLabel filenameLabel;
     private JLabel statusLabel;
     private OFImage currentImage;
+    private Container contentPane; 
+    
     
     /**
      * Create an ImageViewer show it on screen.
@@ -177,10 +181,36 @@ public class ImageViewer
         frame = new JFrame("ImageViewer");
         makeMenuBar(frame);
         
-        Container contentPane = frame.getContentPane();
+        contentPane = frame.getContentPane();
         
         // Specify the layout manager with nice spacing
         contentPane.setLayout(new BorderLayout(6, 6));
+        JTextField text = new JTextField();
+        contentPane.add(text, BorderLayout.SOUTH);
+            text.addActionListener(new ActionListener() 
+                           {
+                               public void actionPerformed(ActionEvent e) { 
+                                   System.out.println("Text=" + text.getText());
+                                   text.setEditable(false);
+                               }   
+                           });
+             text.getDocument().addDocumentListener(new DocumentListener() 
+                { 
+                    public void changedUpdate(DocumentEvent e) {
+                        print(e);
+                    }
+                    public void removeUpdate(DocumentEvent e) {
+                        print(e);
+                    }
+                      public void insertUpdate(DocumentEvent e) {
+                        print(e);
+                    }
+                    public void print(DocumentEvent e) {
+                        System.out.println("Value changed to:" + text.getText());
+                    }
+                });
+        
+    
         
         filenameLabel = new JLabel();
         contentPane.add(filenameLabel, BorderLayout.NORTH);
@@ -189,7 +219,9 @@ public class ImageViewer
         contentPane.add(imagePanel, BorderLayout.CENTER);
 
         statusLabel = new JLabel(VERSION);
-        contentPane.add(statusLabel, BorderLayout.SOUTH);
+        contentPane.add(statusLabel, BorderLayout.WEST);
+        
+         String name = JOptionPane.showInputDialog(frame, "What's your name?");
         
         // building is done - arrange the components and show        
         showFilename(null);
@@ -274,6 +306,20 @@ public class ImageViewer
                                public void actionPerformed(ActionEvent e) { showAbout(); }
                            });
         menu.add(item);
+        
+        // create the Help menu
+        menu = new JMenu("Input");
+            menu.addActionListener(new ActionListener() {
+                               public void actionPerformed(ActionEvent e) { showInput(); }
+                           });
+        menubar.add(menu);
+
 
     }
+    
+    public void showInput()
+    {
+        
+    }
+
 }
